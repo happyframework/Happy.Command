@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Happy.Command.Internal
+namespace Happy.Command.Impls
 {
     internal sealed class CommandExecuteContext : ICommandExecuteContext
     {

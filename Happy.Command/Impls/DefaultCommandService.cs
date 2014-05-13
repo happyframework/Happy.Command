@@ -9,7 +9,7 @@ using Microsoft.Practices.ServiceLocation;
 
 using Happy.Utils.Reflection;
 
-namespace Happy.Command.Internal
+namespace Happy.Command.Impls
 {
     internal sealed class DefaultCommandService : ICommandService
     {

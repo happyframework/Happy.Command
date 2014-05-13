@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Happy.Command.Internal;
+using Happy.Command.Impls;
 
 namespace Happy.Command
 {
