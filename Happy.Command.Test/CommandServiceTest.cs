@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using NUnit.Framework;
+using Microsoft.Practices.ServiceLocation;
 
+using Happy.ServiceLocation;
 using Happy.Command.Test.Stub.Simple;
 
 namespace Happy.Command.Test
@@ -16,6 +18,8 @@ namespace Happy.Command.Test
         [Test]
         public void Execute_Simple_Test()
         {
+            ServiceLocator.SetLocatorProvider(() => new AppDomainServiceLocator());
+
             var testCommand = new TestCommand();
 
             CommandService.Current.Execute(testCommand);

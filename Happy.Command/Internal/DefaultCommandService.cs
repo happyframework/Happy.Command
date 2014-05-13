@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
+using Microsoft.Practices.ServiceLocation;
+
 using Happy.Utils.Reflection;
-using Happy.Factory;
 
 namespace Happy.Command.Internal
 {
     internal sealed class DefaultCommandService : ICommandService
     {
-        private IFactory _factory = new DefaultFactory();
+        private IServiceLocator _locator = ServiceLocator.Current;
 
         public void Execute<TCommand>(TCommand command)
         {
@@ -23,18 +24,17 @@ namespace Happy.Command.Internal
             context.Next();
         }
 
-        public void SetFactory(Factory.IFactory factory)
+        public void SetLocator(IServiceLocator locator)
         {
-            Check.MustNotNull(factory, "factory");
+            Check.MustNotNull(locator, "locator");
 
-            _factory = factory;
+            _locator = locator;
         }
 
         private CommandExecuteContext CreateCommandExecuteContext<TCommand>(
                                                                 TCommand command)
         {
-            var handler = _factory
-                                    .CreateInstance<ICommandHandler<TCommand>>();
+            var handler = _locator.GetInstance<ICommandHandler<TCommand>>();
             if (handler == null)
             {
                 throw new CommandException(

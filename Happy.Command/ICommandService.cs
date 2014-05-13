@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Happy.Factory;
+using Microsoft.Practices.ServiceLocation;
 
 namespace Happy.Command
 {
@@ -20,8 +20,8 @@ namespace Happy.Command
         void Execute<TCommand>(TCommand command);
 
         /// <summary>
-        /// 设置<paramref name="factory"/>。
+        /// 设置<paramref name="locator"/>。
         /// </summary>
-        void SetFactory(IFactory factory);
+        void SetLocator(IServiceLocator locator);
     }
 }
