@@ -27,7 +27,7 @@ namespace Happy.Command.Impls
 
         public object Command { get; private set; }
 
-        public void Next()
+        public void Proceed()
         {
             _currentInterceptorIndex++;
             if (_currentInterceptorIndex < _interceptors.Count)

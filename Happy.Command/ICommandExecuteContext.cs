@@ -20,6 +20,6 @@ namespace Happy.Command
         /// 执行下一个<see cref="CommandInterceptorAttribute"/>，如果已经是最后一个，就会
         /// 执行<see cref="ICommandHandler{TCommand}"/>。
         /// </summary>
-        void Next();
+        void Proceed();
     }
 }

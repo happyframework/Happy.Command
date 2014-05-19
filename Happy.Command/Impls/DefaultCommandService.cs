@@ -21,7 +21,7 @@ namespace Happy.Command.Impls
 
             var context = this.CreateCommandExecuteContext(command);
 
-            context.Next();
+            context.Proceed();
         }
 
         public void SetLocator(IServiceLocator locator)

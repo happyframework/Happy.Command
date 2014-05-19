@@ -20,7 +20,7 @@ namespace Happy.Command.Test.Stub.Simple
         {
             (context.Command as TestCommand).Output +=
                                     ("Before:TestCommandInterceptor1Attibute");
-            context.Next();
+            context.Proceed();
             (context.Command as TestCommand).Output +=
                                     ("After:TestCommandInterceptor1Attibute");
         }
