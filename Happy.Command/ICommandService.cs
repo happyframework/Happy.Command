@@ -18,10 +18,5 @@ namespace Happy.Command
         /// </summary>
         /// <exception cref="CommandException"></exception>
         void Execute<TCommand>(TCommand command);
-
-        /// <summary>
-        /// 设置<paramref name="locator"/>。
-        /// </summary>
-        void SetLocator(IServiceLocator locator);
     }
 }
