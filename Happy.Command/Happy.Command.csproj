@@ -51,7 +51,6 @@
     <Compile Include="CommandException.cs" />
     <Compile Include="CommandInterceptorAttribute.cs" />
     <Compile Include="CommandService.cs" />
-    <Compile Include="CommandServiceProvider.cs" />
     <Compile Include="ICommandExecuteContext.cs" />
     <Compile Include="ICommandHandler.cs" />
     <Compile Include="ICommandService.cs" />

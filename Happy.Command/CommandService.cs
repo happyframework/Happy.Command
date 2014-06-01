@@ -14,31 +14,14 @@ namespace Happy.Command
     public static class CommandService
     {
         private static readonly DefaultCommandService _DefaultCommandService
-            = new DefaultCommandService();
-
-        private static CommandServiceProvider _CurrentProvider = GetDefaultCommandService;
+                                                            = new DefaultCommandService();
 
         /// <summary>
         /// 当前应用程序正在使用的命令服务。
         /// </summary>
         public static ICommandService Current
         {
-            get { return _CurrentProvider(); }
-        }
-
-        /// <summary>
-        /// 设置当前应用程序正在使用的命令服务提供者。
-        /// </summary>
-        public static void SetProvider(CommandServiceProvider provider)
-        {
-            Check.MustNotNull(provider, "provider");
-
-            _CurrentProvider = provider;
-        }
-
-        private static ICommandService GetDefaultCommandService()
-        {
-            return _DefaultCommandService;
+            get { return _DefaultCommandService; }
         }
     }
 }
