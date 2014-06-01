@@ -13,7 +13,7 @@ namespace Happy.Command
     /// </summary>
     public static class CommandService
     {
-        private static readonly DefaultCommandService _DefaultCommandService
+        private static readonly DefaultCommandService _Current
                                                             = new DefaultCommandService();
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Happy.Command
         /// </summary>
         public static ICommandService Current
         {
-            get { return _DefaultCommandService; }
+            get { return _Current; }
         }
     }
 }
