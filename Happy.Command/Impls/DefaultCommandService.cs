@@ -13,18 +13,6 @@ namespace Happy.Command.Impls
 {
     internal sealed class DefaultCommandService : ICommandService
     {
-        private readonly Lazy<IServiceLocator> _locator = new Lazy<IServiceLocator>(() =>
-                                                                ServiceLocator.Current);
-
-        public DefaultCommandService() { }
-
-        public DefaultCommandService(IServiceLocator locator)
-        {
-            Check.MustNotNull(locator, "locator");
-
-            _locator = new Lazy<IServiceLocator>(() => locator);
-        }
-
         public void Execute<TCommand>(TCommand command)
         {
             Check.MustNotNull(command, "command");
@@ -34,12 +22,10 @@ namespace Happy.Command.Impls
             context.Proceed();
         }
 
-
-
         private CommandExecuteContext CreateCommandExecuteContext<TCommand>(
                                                                 TCommand command)
         {
-            var handler = _locator.Value.GetInstance<ICommandHandler<TCommand>>();
+            var handler = ServiceLocator.Current.GetInstance<ICommandHandler<TCommand>>();
             if (handler == null)
             {
                 throw new CommandException(
