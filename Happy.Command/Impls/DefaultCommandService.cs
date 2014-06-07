@@ -32,13 +32,24 @@ namespace Happy.Command.Impls
                                 Resource.Messages.Error_CommandHandlerNotExist);
             }
 
-            var interceptors = handler.GetType()
-                                    .GetAttributes<CommandInterceptorAttribute>();
+            var interceptors = GetInterceptors<TCommand>(command, handler);
 
             return new CommandExecuteContext(command, interceptors, () =>
             {
                 handler.Handle(command);
             });
+        }
+
+        private static IEnumerable<CommandInterceptorAttribute> GetInterceptors<TCommand>
+                                    (TCommand command, ICommandHandler<TCommand> handler)
+        {
+            var commandInterceptors = command.GetType()
+                                    .GetAttributes<CommandInterceptorAttribute>();
+
+            var handlerInterceptors = handler.GetType()
+                                    .GetAttributes<CommandInterceptorAttribute>();
+
+            return commandInterceptors.Concat(handlerInterceptors);
         }
     }
 }
